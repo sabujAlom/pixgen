@@ -6,10 +6,10 @@ import Link from "next/link";
 
 const Navbar = () => {
   const userData = authClient.useSession();
-  const user = authClient.data?.user;
+  const user = userData.data?.user;
 
-  const handleSignOut = () =>{
-    
+  const handleSignOut = async () => {
+    await authClient.signOut();
   }
 
   return (
@@ -53,21 +53,22 @@ const Navbar = () => {
               </li>
             </ul>
           )}
-        </div>
-        {user && (
-          <div className="flex gap-3">
-            <Avatar size="sm">
-              <Avatar.Image
-                alt="John Doe"
-                src={user?.image}
-                referrerPolicy="no-referrer"
-              />
-              <Avatar.Fallback>J{user?.name.charAt(0)}</Avatar.Fallback>
-            </Avatar>
 
-            <Button size="sm" variant="danger">SignOut</Button>
-          </div>
-        )}
+          {user && (
+            <div className="flex gap-3">
+              <Avatar size="sm">
+                <Avatar.Image
+                  alt="John Doe"
+                  src={user?.image}
+                  referrerPolicy="no-referrer"
+                />
+                <Avatar.Fallback>{user?.name.charAt(0)}</Avatar.Fallback>
+              </Avatar>
+
+              <Button onClick={handleSignOut} size="sm" variant="danger">SignOut</Button>
+            </div>
+          )}
+        </div>
       </nav>
     </div>
   );
