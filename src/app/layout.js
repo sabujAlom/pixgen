@@ -3,10 +3,11 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-
 const OutfitFont = Outfit({
   subsets: ["latin"],
 });
+// english alph(latin), greek, arabic, bengali
+
 
 
 export const metadata = {
@@ -18,17 +19,14 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${OutfitFont.className} h-full antialiased`}
+      className={`${OutfitFont.className}  h-full antialiased`}
     >
       <body>
         <Navbar/>
-        
-        <main className="max-w-6xl mx-auto">
-        
-        {children}
-        </main>
+        <main className="max-w-7xl mx-auto">{children} </main>
         <Footer/>
-        </body>
+
+      </body>
     </html>
   );
 }

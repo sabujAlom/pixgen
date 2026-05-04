@@ -7,7 +7,7 @@ const db = client.db("pixgen");
 
 export const auth = betterAuth({
   database: mongodbAdapter(db, {
-    client,
+    client
   }),
   emailAndPassword: {
     enabled: true
@@ -16,6 +16,7 @@ export const auth = betterAuth({
     google: {
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET
+      
     }
   }
 });
